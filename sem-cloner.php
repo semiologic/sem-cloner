@@ -3,11 +3,10 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/marketing/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
+Version: 1.0.1 alpha
 Author: Denis de Bernardy
-Version: 1.0
 Author URI: http://www.getsemiologic.com
-Update Service: http://version.semiologic.com/plugins
-Update Tag: sem_cloner
+Update Package: https://members.semiologic.com/media/plugins/sem-cloner.zip
 */
 
 /*

@@ -3,7 +3,7 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/marketing/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
-Version: 1.0.1 RC
+Version: 1.1 RC
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
 Update Package: https://members.semiologic.com/media/plugins/sem-cloner/sem-cloner.zip
@@ -18,7 +18,7 @@ This software is copyright Mesoconcepts and is distributed under the terms of th
 http://www.mesoconcepts.com/license/
 **/
 
-define('sem_cloner_version', '1.0');
+define('sem_cloner_version', '1.1');
 
 class sem_cloner
 {
@@ -188,16 +188,21 @@ class sem_cloner
 				AND option_name NOT LIKE 'xml\_sitemaps%'
 				;");
 			
+			#	AND option_name NOT LIKE 'uninstall\_%'
+			
 			$options = array();
 			
 			foreach ( $option_names as $option_name )
 			{
 				$option = get_option($option_name);
 				
-				if ( !is_object($option) )
+				# discard objects
+				if ( sem_cloner::has_object($option) )
 				{
-					$options[$option_name] = $option;
+					continue;
 				}
+			
+				$options[$option_name] = $option;
 			}
 			
 			$$data = $options;
@@ -219,6 +224,35 @@ class sem_cloner
 		
 		die;
 	} # export()
+	
+	
+	#
+	# has_object()
+	#
+	
+	function has_object($option)
+	{
+		if ( is_string($option) || is_numeric($option) || is_bool($option) )
+		{
+			return false;
+		}
+		elseif ( gettype($option) == 'object' )
+		{
+			return true;
+		}
+		elseif ( is_array($option) )
+		{
+			foreach ( $option as $opt )
+			{
+				if ( sem_cloner::has_object($opt) )
+				{
+					return true;
+				}
+			}
+		}
+			
+		return false;
+	} # has_object()
 } # sem_cloner
 
 sem_cloner::init();

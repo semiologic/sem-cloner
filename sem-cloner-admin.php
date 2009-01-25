@@ -172,7 +172,7 @@ EOF;
 
 			$$data = preg_replace("/^.*<data>|<\/data>.*$/", '', $$data);
 			$$data = @base64_decode($$data);
-			
+			#if ( $data == 'options' ) { dump(htmlspecialchars($$data)); die; }
 			$$data = 'return ' . $$data . ';';
 			$$data = eval($$data);
 			

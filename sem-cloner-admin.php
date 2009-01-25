@@ -73,16 +73,24 @@ EOF;
 	{
 		wp_nonce_field('sem_cloner');
 		
-		echo '<p>' . 'The form that follows will allow you to import another Semiologic Pro site\'s options into this one. Both sites need to be running the same version of the Semiologic Pro cloner.' . '</p>' . "\n";
+		$site_url = user_trailingslashit(get_option('home'));
+		$site_key = strip_tags(get_option('sem_cloner_key'));
 		
-		echo '<p>' . 'Please enter the details of the site that you wish to copy.' . '</p>' . "\n";
+		echo '<p>' . '<strong>This site\'s Url</strong>: ' . $site_url . '</p>' . "\n";
+		
+		echo '<p>' . '<strong>This site\'s Key</strong>: ' . $site_key . '</p>' . "\n";
+		
+		echo '<hr />' . "\n";
+		
+		echo '<p>' . 'The form that follows will allow you to import another site\'s options into this one. Both sites need to be running the same version of the Semiologic cloner plugin.' . '</p>' . "\n";
+		
+		echo '<p>' . 'Please enter the url and the key of the site that you wish to copy. You will find the site key under Tools / Clone on the other site.' . '</p>' . "\n";
 		
 		echo '<table class="form-table">' . "\n";
 		
 		foreach ( array(
 			'site_url' => 'Site Url',
-			'site_user' => 'Admin User',
-			'site_pass' => 'Admin Password',
+			'site_key' => 'Site Key',
 			)
 			as $field => $label )
 		{
@@ -91,7 +99,7 @@ EOF;
 				. $label
 				. '</th>'
 				. '<td>'
-				. '<input type="' . ( $field != 'site_pass' ? 'text' : 'password' ) . '" name="' . $field . '" size="58" style="width: 90%;"'
+				. '<input type="text" name="' . $field . '" size="58" style="width: 90%;"'
 				. ' value="' . ( $field != 'site_pass' ? attribute_escape($_POST[$field]) : '' ) . '"'
 				. ' />'
 				. '</td>'
@@ -115,7 +123,7 @@ EOF;
 		
 		check_admin_referer('sem_cloner');
 		
-		foreach ( array('site_url', 'site_user', 'site_pass') as $field )
+		foreach ( array('site_url', 'site_key') as $field )
 		{
 			if ( !isset($_POST[$field]) || !$_POST[$field] )
 			{
@@ -131,10 +139,22 @@ EOF;
 			$$field = stripslashes($_POST[$field]);
 		}
 		
+		if ( $site_key == get_option('sem_cloner_key') )
+		{
+			unset($_POST['site_key']);
+			
+			echo '<div class="error">'
+				. '<p>'
+				. 'You\'ve filled this site\'s key, rather than the site key of the site that you wish to clone.'
+				. '</p>'
+				. '</div>' . "\n";
+			
+			return false;
+		}
+		
 		$url = $site_url
 			. '?method=sem_cloner'
-			. '&user=' . urlencode($site_user)
-			. '&pass=' . urlencode($site_pass)
+			. '&key=' . urlencode($site_key)
 			. '&data=';
 		
 		foreach ( array('version', 'options') as $data )
@@ -156,6 +176,7 @@ EOF;
 				
 				echo '<div class="error">'
 					. '<p>' . $msg . '</p>'
+					. '<p>' . 'Please make sure that the site you are seeking to clone is using the same version of Semiologic Cloner as this one.' . '</p>'
 					. '</div>' . "\n";
 				
 				return false;

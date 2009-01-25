@@ -3,7 +3,7 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/marketing/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
-Version: 1.1 RC
+Version: 1.2 RC
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
 Update Package: https://members.semiologic.com/media/plugins/sem-cloner/sem-cloner.zip
@@ -18,7 +18,7 @@ This software is copyright Mesoconcepts and is distributed under the terms of th
 http://www.mesoconcepts.com/license/
 **/
 
-define('sem_cloner_version', '1.1');
+define('sem_cloner_version', '1.2');
 
 class sem_cloner
 {
@@ -29,6 +29,11 @@ class sem_cloner
 	function init()
 	{
 		add_action('init', array('sem_cloner', 'rpc'));
+		
+		if ( !get_option('sem_cloner_key') )
+		{
+			update_option('sem_cloner_key', uniqid(rand()));
+		}
 	} # init()
 	
 	
@@ -60,22 +65,11 @@ class sem_cloner
 		echo '<?xml version="1.0" encoding="utf-8" ?>';
 		
 		# Validate user
-		if ( !isset($_REQUEST['user']) || !$_REQUEST['user']
-			|| !isset($_REQUEST['pass']) || !$_REQUEST['pass']
-			)
+		if ( !isset($_REQUEST['key']) || $_REQUEST['key'] != get_option('sem_cloner_key') )
 		{
 			die('<error>Access Denied</error>');
 		}
 
-		$user = wp_authenticate($_REQUEST['user'], $_REQUEST['pass']);
-		
-		if ( is_wp_error($user)
-			|| !$user->has_cap('administrator')
-			)
-		{
-			die('<error>Access Denied</error>');
-		}
-		
 		# Execute RPC
 		sem_cloner::export();
 		die;
@@ -170,7 +164,8 @@ class sem_cloner
 						'recently_activated',
 						'sem_entropy',
 						'sem_docs_version',
-						'wporg_popular_tags'
+						'wporg_popular_tags',
+						'sem_cloner_key'
 						)
 				AND option_name NOT LIKE '%cache%'
 				AND option_name NOT LIKE '%Cache%'
@@ -186,9 +181,8 @@ class sem_cloner
 				AND option_name NOT LIKE 'search\_reloaded\_%'
 				AND option_name NOT LIKE 'SUP\_%'
 				AND option_name NOT LIKE 'xml\_sitemaps%'
+				AND option_name NOT LIKE 'uninstall\_%'
 				;");
-			
-			#	AND option_name NOT LIKE 'uninstall\_%'
 			
 			$options = array();
 			

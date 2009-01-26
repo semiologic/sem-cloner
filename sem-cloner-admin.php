@@ -252,7 +252,7 @@ EOF;
 
 						foreach ( $plugins as $plugin )
 						{
-							if ( file_exists(ABSPATH . PLUGINDIR . '/' . $plugin) )
+							if ( $plugin && file_exists(ABSPATH . PLUGINDIR . '/' . $plugin) )
 							{
 								include_once(ABSPATH . PLUGINDIR . '/' . $plugin);
 								do_action('activate_' . $plugin);

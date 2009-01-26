@@ -3,7 +3,7 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/marketing/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
-Version: 1.2
+Version: 1.3 alpha
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
 Update Package: https://members.semiologic.com/media/plugins/sem-cloner/sem-cloner.zip
@@ -101,7 +101,7 @@ class sem_cloner
 			global $wpdb;
 			
 			$option_names = (array) $wpdb->get_col("
-				SELECT option_name
+				SELECT DISTINCT option_name
 				FROM $wpdb->options
 				WHERE option_name NOT IN (
 						'home',

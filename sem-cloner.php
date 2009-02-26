@@ -6,7 +6,6 @@ Description: Lets you clone a Semiologic Pro site's preferences.
 Version: 1.3 alpha
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
-Update Package: https://members.semiologic.com/media/plugins/sem-cloner/sem-cloner.zip
 */
 
 /*

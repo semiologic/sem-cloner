@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Semiologic Cloner
-Plugin URI: http://www.semiologic.com/software/marketing/sem-cloner/
+Plugin URI: http://www.semiologic.com/software/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
 Version: 1.3 RC
 Author: Denis de Bernardy

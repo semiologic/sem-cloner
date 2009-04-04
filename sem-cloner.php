@@ -177,7 +177,7 @@ class sem_cloner
 				AND option_name NOT LIKE 'IWG\_%'
 				AND option_name NOT LIKE '%\_salt'
 				AND option_name NOT LIKE '%\_seed'
-				AND option_name NOT LIKE 'search\_reloaded%'
+				AND option_name NOT LIKE 'search\_reloaded\_%'
 				AND option_name NOT LIKE 'SUP\_%'
 				AND option_name NOT LIKE 'xml\_sitemaps%'
 				AND option_name NOT LIKE 'uninstall\_%'

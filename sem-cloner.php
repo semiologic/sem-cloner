@@ -72,6 +72,7 @@ class sem_cloner
 		# Execute RPC
 		if ( !class_exists('sem_cloner') ) {
 			include_once dirname(__FILE__) . 'sem-cloner-admin.php';
+		}
 		
 		sem_cloner_admin::export();
 		die;

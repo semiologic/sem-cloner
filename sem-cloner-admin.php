@@ -100,7 +100,7 @@ EOF;
 				. '</th>'
 				. '<td>'
 				. '<input type="text" name="' . $field . '" size="58" style="width: 90%;"'
-				. ' value="' . ( $field != 'site_pass' ? attribute_escape($_POST[$field]) : '' ) . '"'
+				. ' value="' . ( $field != 'site_pass' ? esc_attr($_POST[$field]) : '' ) . '"'
 				. ' />'
 				. '</td>'
 				. '</tr>';

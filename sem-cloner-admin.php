@@ -11,6 +11,8 @@ class sem_cloner_admin {
 		
 		echo '<form method="post" action="">' . "\n";
 		
+		screen_icon();
+		
 		echo '<h2>' . __('Semiologic Cloner', 'sem-cloner') . '</h2>' . "\n";
 		
 		if ( sem_cloner_admin::exec() ) {

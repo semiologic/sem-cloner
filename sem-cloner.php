@@ -3,7 +3,7 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/sem-cloner/
 Description: Lets you clone a Semiologic Pro site's preferences.
-Version: 1.4 alpha
+Version: 1.4 beta
 Author: Denis de Bernardy
 Author URI: http://www.getsemiologic.com
 Text Domain: sem-cloner-info
@@ -19,32 +19,51 @@ This software is copyright Mesoconcepts and is distributed under the terms of th
 http://www.mesoconcepts.com/license/
 **/
 
+
+load_plugin_textdomain('sem-cloner', null, dirname(__FILE__) . '/lang');
+
+
+/**
+ * sem_cloner
+ *
+ * @package Semiologic Cloner
+ **/
+
 define('sem_cloner_version', '1.4');
 
-class sem_cloner
-{
-	#
-	# init()
-	#
+add_action('init', array('sem_cloner', 'rpc'));
+add_action('admin_menu', array('sem_cloner', 'admin_menu'));
+
+if ( !get_option('sem_cloner_key') )
+	update_option('sem_cloner_key', uniqid(rand()));
+
+class sem_cloner {
+	/**
+	 * admin_menu()
+	 *
+	 * @return void
+	 **/
 	
-	function init()
-	{
-		add_action('init', array('sem_cloner', 'rpc'));
-		
-		if ( !get_option('sem_cloner_key') )
-		{
-			update_option('sem_cloner_key', uniqid(rand()));
-		}
-	} # init()
+	function admin_menu() {
+		add_management_page(
+			__('Clone', 'sem-cloner'),
+			__('Clone', 'sem-cloner'),
+			'manage_options',
+			'sem-cloner',
+			array('sem_cloner_admin', 'edit_options')
+			);
+	} # admin_menu()
 	
 	
-	#
-	# rpc()
-	#
+	/**
+	 * rpc()
+	 *
+	 * @return void
+	 **/
 	
-	function rpc()
-	{
-		if ( !isset($_REQUEST['method']) || $_REQUEST['method'] != 'sem_cloner' ) return;
+	function rpc() {
+		if ( !isset($_REQUEST['method']) || $_REQUEST['method'] != 'sem_cloner' )
+			return;
 		
 		# Reset WP
 		$GLOBALS['wp_filter'] = array();
@@ -67,25 +86,21 @@ class sem_cloner
 		
 		# Validate user
 		if ( !isset($_REQUEST['key']) || $_REQUEST['key'] != get_option('sem_cloner_key') )
-		{
-			die('<error>Access Denied</error>');
-		}
+			die('<error>' . __('Access Denied', 'sem-cloner') . '</error>');
 
 		# Execute RPC
-		if ( !class_exists('sem_cloner') ) {
-			include_once dirname(__FILE__) . 'sem-cloner-admin.php';
-		}
+		if ( !class_exists('sem_cloner_admin') )
+			include dirname(__FILE__) . '/sem-cloner-admin.php';
 		
 		sem_cloner_admin::export();
 		die;
 	} # rpc()
 } # sem_cloner
 
-sem_cloner::init();
-
-
-if ( is_admin() )
-{
-	include dirname(__FILE__) . '/sem-cloner-admin.php';
+function sem_cloner_admin() {
+	if ( !class_exists('sem_cloner_admin') )
+		include dirname(__FILE__) . '/sem-cloner-admin.php';
 }
+
+add_action('load-tools_page_sem-cloner', 'sem_cloner_admin');
 ?>

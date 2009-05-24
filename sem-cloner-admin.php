@@ -76,7 +76,7 @@ class sem_cloner_admin {
 				. '</th>'
 				. '<td>'
 				. '<input type="text" name="' . $field . '" size="58" class="widefat"'
-				. ' value="' . ( $field != 'site_pass' ? esc_attr($_POST[$field]) : '' ) . '"'
+				. ' value="' . ( $field != 'site_pass' ? esc_attr(stripslashes($_POST[$field])) : '' ) . '"'
 				. ' />'
 				. '</td>'
 				. '</tr>';

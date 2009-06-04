@@ -169,7 +169,7 @@ class sem_cloner_admin {
 
 			$$data = preg_replace("/^.*<data>|<\/data>.*$/", '', $$data);
 			$$data = @base64_decode($$data);
-			#if ( $data == 'options' ) { dump(htmlspecialchars($$data)); die; }
+			#if ( $data == 'options' ) { dump(esc_html($$data)); die; }
 			$$data = 'return ' . $$data . ';';
 			$$data = eval($$data);
 			

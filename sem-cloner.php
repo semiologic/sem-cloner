@@ -31,7 +31,7 @@ load_plugin_textdomain('sem-cloner', null, dirname(__FILE__) . '/lang');
 
 define('sem_cloner_version', '1.4');
 
-add_action('init', array('sem_cloner', 'rpc'));
+add_action('init', array('sem_cloner', 'rpc'), 1000000);
 add_action('admin_menu', array('sem_cloner', 'admin_menu'));
 
 if ( !get_option('sem_cloner_key') )

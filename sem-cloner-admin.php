@@ -347,6 +347,9 @@ class sem_cloner_admin {
 				AND option_name NOT LIKE 'search\_reloaded\_%'
 				AND option_name NOT LIKE 'SUP\_%'
 				AND option_name NOT LIKE 'xml\_sitemaps%'
+				AND option_name NOT LIKE '\_transient%'
+				AND option_name NOT LIKE '%\_created'
+				AND option_name NOT LIKE '%\_changed'
 				AND option_name NOT LIKE 'uninstall\_%'
 				;");
 			

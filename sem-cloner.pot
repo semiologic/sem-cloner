@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-07-07 23:05+0200\n"
+"POT-Creation-Date: 2009-07-15 22:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: sem-cloner-admin.php:16
+#: sem-cloner-admin.php:16 sem-cloner-info.php:2
 msgid "Semiologic Cloner"
 msgstr ""
 
@@ -99,6 +99,13 @@ msgstr ""
 
 #: sem-cloner-admin.php:256
 msgid "Invalid Request"
+msgstr ""
+
+#: sem-cloner-info.php:3
+msgid ""
+"Lets you clone a Semiologic Pro site. It also works with normal WordPress "
+"installations, but cloning non-Semiologic Pro plugins and themes may result "
+"in unexpected behaviors."
 msgstr ""
 
 #: sem-cloner.php:49 sem-cloner.php:50

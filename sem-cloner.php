@@ -66,11 +66,13 @@ class sem_cloner {
 			return;
 		
 		# Reset WP
-		$GLOBALS['wp_filter'] = array();
 		$GLOBALS['cache_enabled'] = false;
+		
+		$levels = ob_get_level();
+		for ($i=0; $i<$levels; $i++)
+			ob_end_clean();
 
-		while ( @ob_end_clean() );
-
+		status_header(200);
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		// always modified
 		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
@@ -81,7 +83,7 @@ class sem_cloner {
 		header('Pragma: no-cache');
 
 		# Set the response format.
-		header( 'Content-Type:text/xml; charset=utf-8' );
+		header('Content-Type:text/xml; charset=utf-8');
 		echo '<?xml version="1.0" encoding="utf-8" ?>';
 		
 		# Validate user

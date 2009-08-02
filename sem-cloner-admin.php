@@ -331,7 +331,8 @@ class sem_cloner_admin {
 						'sem_entropy',
 						'sem_docs_version',
 						'wporg_popular_tags',
-						'sem_cloner_key'
+						'sem_cloner_key',
+						'sem_custom_published'
 						)
 				AND option_name NOT LIKE '%cache%'
 				AND option_name NOT LIKE '%Cache%'

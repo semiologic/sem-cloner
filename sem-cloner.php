@@ -22,20 +22,14 @@ http://www.mesoconcepts.com/license/
 
 load_plugin_textdomain('sem-cloner', false, dirname(plugin_basename(__FILE__)) . '/lang');
 
+define('sem_cloner_version', '1.4');
+
 
 /**
  * sem_cloner
  *
  * @package Semiologic Cloner
  **/
-
-define('sem_cloner_version', '1.4');
-
-add_action('init', array('sem_cloner', 'rpc'), 1000000);
-add_action('admin_menu', array('sem_cloner', 'admin_menu'));
-
-if ( !get_option('sem_cloner_key') )
-	update_option('sem_cloner_key', uniqid(rand()));
 
 class sem_cloner {
 	/**
@@ -99,10 +93,18 @@ class sem_cloner {
 	} # rpc()
 } # sem_cloner
 
+
 function sem_cloner_admin() {
 	if ( !class_exists('sem_cloner_admin') )
 		include dirname(__FILE__) . '/sem-cloner-admin.php';
 }
 
 add_action('load-tools_page_sem-cloner', 'sem_cloner_admin');
+
+
+add_action('init', array('sem_cloner', 'rpc'), 1000000);
+add_action('admin_menu', array('sem_cloner', 'admin_menu'));
+
+if ( !get_option('sem_cloner_key') )
+	update_option('sem_cloner_key', uniqid(rand()));
 ?>

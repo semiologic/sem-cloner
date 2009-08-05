@@ -196,6 +196,7 @@ class sem_cloner_admin {
 					case 'mediacaster':
 						$old_value = get_option($option_name);
 						$option_value['itunes'] = $old_value['itunes'];
+						$option_value['longtail'] = $old_value['longtail'];
 						update_option($option_name, $option_value);
 						break;
 
@@ -332,7 +333,11 @@ class sem_cloner_admin {
 						'sem_docs_version',
 						'wporg_popular_tags',
 						'sem_cloner_key',
-						'sem_custom_published'
+						'sem_custom_published',
+						'widget_navbar',
+						'widget_footer',
+						'widget_nav_menu',
+						'ysearch'
 						)
 				AND option_name NOT LIKE '%cache%'
 				AND option_name NOT LIKE '%Cache%'

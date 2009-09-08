@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-08-03 18:31+0200\n"
+"POT-Creation-Date: 2009-09-08 09:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,88 +16,88 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: sem-cloner-admin.php:16 sem-cloner-info.php:2
+#: sem-cloner-admin.php:19 sem-cloner-info.php:2
 msgid "Semiologic Cloner"
 msgstr ""
 
-#: sem-cloner-admin.php:20
+#: sem-cloner-admin.php:23
 msgid "Your site has been cloned successfully!"
 msgstr ""
 
-#: sem-cloner-admin.php:23
+#: sem-cloner-admin.php:26
 msgid "A few options may nonetheless need some attention. Among them:"
 msgstr ""
 
-#: sem-cloner-admin.php:27
+#: sem-cloner-admin.php:30
 msgid "Settings / Cache"
 msgstr ""
 
-#: sem-cloner-admin.php:30
+#: sem-cloner-admin.php:33
 msgid "Settings / Google Analytics"
 msgstr ""
 
-#: sem-cloner-admin.php:56
-msgid "This site's Url"
+#: sem-cloner-admin.php:59
+msgid "This site's Url:"
 msgstr ""
 
-#: sem-cloner-admin.php:58
-msgid "This site's Key"
+#: sem-cloner-admin.php:61
+msgid "This site's Key:"
 msgstr ""
 
-#: sem-cloner-admin.php:62
+#: sem-cloner-admin.php:65
 msgid ""
 "The form that follows will allow you to import another site's options into "
 "this one. Both sites need to be running the same version of the Semiologic "
 "cloner plugin."
 msgstr ""
 
-#: sem-cloner-admin.php:64
+#: sem-cloner-admin.php:67
 msgid ""
-"Please enter the url and the key of the site that you wish to copy. You will "
-"find the site key under Tools / Clone on the other site."
+"Please enter the url and the key of the site that you wish to copy below. "
+"You will find the needed details under Tools / Clone on that site."
 msgstr ""
 
-#: sem-cloner-admin.php:69
+#: sem-cloner-admin.php:72
 msgid "Site Url"
 msgstr ""
 
-#: sem-cloner-admin.php:70
+#: sem-cloner-admin.php:73
 msgid "Site Key"
 msgstr ""
 
-#: sem-cloner-admin.php:88
+#: sem-cloner-admin.php:91
 msgid "Clone Site"
 msgstr ""
 
-#: sem-cloner-admin.php:109
+#: sem-cloner-admin.php:112
 msgid "Please fill in all of the fields."
 msgstr ""
 
-#: sem-cloner-admin.php:124
+#: sem-cloner-admin.php:127
 msgid ""
 "You've filled this site's key, rather than the site key of the site that you "
 "wish to clone."
 msgstr ""
 
-#: sem-cloner-admin.php:153
+#: sem-cloner-admin.php:156
 msgid ""
 "Please make sure that the site you are seeking to clone is using the same "
 "version of Semiologic Cloner as this one."
 msgstr ""
 
-#: sem-cloner-admin.php:163
+#: sem-cloner-admin.php:166
 msgid ""
 "Invalid data was returned. Please make sure the Semiologic Cloner plugin is "
 "active on the site you are seeking to clone."
 msgstr ""
 
-#: sem-cloner-admin.php:185
+#: sem-cloner-admin.php:188
 msgid ""
 "Version mismatch. Please make sure the site you are cloning is running the "
 "same version of Semiologic Cloner as this one."
 msgstr ""
 
-#: sem-cloner-admin.php:256
+#: sem-cloner-admin.php:260
 msgid "Invalid Request"
 msgstr ""
 

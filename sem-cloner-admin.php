@@ -7,6 +7,9 @@ class sem_cloner_admin {
 	 **/
 
 	function edit_options() {
+		if ( !current_user_can('manage_options') )
+			return;
+		
 		echo '<div class="wrap">' . "\n";
 		
 		echo '<form method="post" action="">' . "\n";
@@ -53,15 +56,15 @@ class sem_cloner_admin {
 		$site_url = user_trailingslashit(get_option('home'));
 		$site_key = strip_tags(get_option('sem_cloner_key'));
 		
-		echo '<p>' . '<strong>' . __('This site\'s Url', 'sem-cloner') . '</strong>: ' . $site_url . '</p>' . "\n";
+		echo '<p>' . '<strong>' . __('This site\'s Url:', 'sem-cloner') . '</strong><br /> <input type="text" class="code" size="58" readonly="readonly" value="' . esc_attr($site_url) . '"/></p>' . "\n";
 		
-		echo '<p>' . '<strong>' . __('This site\'s Key', 'sem-cloner') . '</strong>: ' . $site_key . '</p>' . "\n";
+		echo '<p>' . '<strong>' . __('This site\'s Key:', 'sem-cloner') . '</strong><br /> <input type="text" class="code" size="58" readonly="readonly" value="' . $site_key . '"/></p>' . "\n";
 		
 		echo '<hr />' . "\n";
 		
 		echo '<p>' . __('The form that follows will allow you to import another site\'s options into this one. Both sites need to be running the same version of the Semiologic cloner plugin.', 'sem-cloner') . '</p>' . "\n";
 		
-		echo '<p>' . __('Please enter the url and the key of the site that you wish to copy. You will find the site key under Tools / Clone on the other site.', 'sem-cloner') . '</p>' . "\n";
+		echo '<p>' . __('Please enter the url and the key of the site that you wish to copy below. You will find the needed details under Tools / Clone on that site.', 'sem-cloner') . '</p>' . "\n";
 		
 		echo '<table class="form-table">' . "\n";
 		

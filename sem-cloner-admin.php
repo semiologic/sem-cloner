@@ -62,7 +62,7 @@ class sem_cloner_admin {
 		
 		echo '<hr />' . "\n";
 		
-		echo '<p>' . __('The form that follows will allow you to import another site\'s options into this one. Both sites need to be running the same version of the Semiologic cloner plugin.', 'sem-cloner') . '</p>' . "\n";
+		echo '<p>' . __('The form that follows will allow you to import another site\'s options into this one. Both sites need to be running the same version of the Semiologic Cloner plugin.', 'sem-cloner') . '</p>' . "\n";
 		
 		echo '<p>' . __('Please enter the url and the key of the site that you wish to copy below. You will find the needed details under Tools / Clone on that site.', 'sem-cloner') . '</p>' . "\n";
 		

@@ -137,11 +137,16 @@ class sem_cloner_admin {
 			. '&data=';
 		
 		foreach ( array('version', 'options') as $data ) {
-			$$data = wp_remote_fopen($url . $data);
+			$response = wp_remote_get( $url . $data, array('timeout' => 20) );
+			if ( is_wp_error( $response ) ) {
+				$$data = $response;
+			} else {
+				$$data = $response['body'];
+			}
 			
 			if ( is_wp_error($$data) ) {
 				echo '<div class="error">'
-					. '<p>' . $$data->get_error_message() . '</p>'
+					. '<p>' . esc_html( $$data->get_error_message() ) . '</p>'
 					. '</div>' . "\n";
 				
 				return false;

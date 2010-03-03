@@ -35,6 +35,10 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 == Change Log ==
 
+= 1.4.1 =
+
+- Improve error handling
+
 = 1.4 =
 
 - Complete rewrite

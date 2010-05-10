@@ -18,7 +18,11 @@ class sem_cloner_admin {
 		
 		echo '<h2>' . __('Semiologic Cloner', 'sem-cloner') . '</h2>' . "\n";
 		
-		if ( sem_cloner_admin::exec() ) {
+		if ( function_exists('is_multisite') && is_multisite() ) {
+			echo '<p>'
+				. __('Semiologic Cloner cannot work in multisite environements.', 'sem-cloner')
+				. '</p>' . "\n";
+		} elseif ( sem_cloner_admin::exec() ) {
 			echo '<p>'
 				. __('Your site has been cloned successfully!', 'sem-cloner')
 				. '</p>' . "\n"

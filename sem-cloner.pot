@@ -1,14 +1,14 @@
 # Semiologic Cloner pot file.
-# Copyright (C) 2009 Mesoconcepts <http://www.mesoconcepts.com>
+# Copyright (C) 2010 Mesoconcepts <http://www.mesoconcepts.com>
 # This file is distributed under the same license as the Semiologic Cloner package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.4\n"
+"Project-Id-Version: 1.4.2\n"
 "Report-Msgid-Bugs-To: https://tickets.semiologic.com\n"
-"POT-Creation-Date: 2009-09-25 20:25+0200\n"
+"POT-Creation-Date: 2010-05-10 15:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,83 +21,87 @@ msgid "Semiologic Cloner"
 msgstr ""
 
 #: sem-cloner-admin.php:23
+msgid "Semiologic Cloner cannot work in multisite environements."
+msgstr ""
+
+#: sem-cloner-admin.php:27
 msgid "Your site has been cloned successfully!"
 msgstr ""
 
-#: sem-cloner-admin.php:26
+#: sem-cloner-admin.php:30
 msgid "A few options may nonetheless need some attention. Among them:"
 msgstr ""
 
-#: sem-cloner-admin.php:30
+#: sem-cloner-admin.php:34
 msgid "Settings / Cache"
 msgstr ""
 
-#: sem-cloner-admin.php:33
+#: sem-cloner-admin.php:37
 msgid "Settings / Google Analytics"
 msgstr ""
 
-#: sem-cloner-admin.php:59
+#: sem-cloner-admin.php:63
 msgid "This site's Url:"
 msgstr ""
 
-#: sem-cloner-admin.php:61
+#: sem-cloner-admin.php:65
 msgid "This site's Key:"
 msgstr ""
 
-#: sem-cloner-admin.php:65
+#: sem-cloner-admin.php:69
 msgid ""
 "The form that follows will allow you to import another site's options into "
 "this one. Both sites need to be running the same version of the Semiologic "
 "Cloner plugin."
 msgstr ""
 
-#: sem-cloner-admin.php:67
+#: sem-cloner-admin.php:71
 msgid ""
 "Please enter the url and the key of the site that you wish to copy below. "
 "You will find the needed details under Tools / Clone on that site."
 msgstr ""
 
-#: sem-cloner-admin.php:72
+#: sem-cloner-admin.php:76
 msgid "Site Url"
 msgstr ""
 
-#: sem-cloner-admin.php:73
+#: sem-cloner-admin.php:77
 msgid "Site Key"
 msgstr ""
 
-#: sem-cloner-admin.php:91
+#: sem-cloner-admin.php:95
 msgid "Clone Site"
 msgstr ""
 
-#: sem-cloner-admin.php:112
+#: sem-cloner-admin.php:116
 msgid "Please fill in all of the fields."
 msgstr ""
 
-#: sem-cloner-admin.php:127
+#: sem-cloner-admin.php:131
 msgid ""
 "You've filled this site's key, rather than the site key of the site that you "
 "wish to clone."
 msgstr ""
 
-#: sem-cloner-admin.php:156
+#: sem-cloner-admin.php:165
 msgid ""
 "Please make sure that the site you are seeking to clone is using the same "
 "version of Semiologic Cloner as this one."
 msgstr ""
 
-#: sem-cloner-admin.php:166
+#: sem-cloner-admin.php:175
 msgid ""
 "Invalid data was returned. Please make sure the Semiologic Cloner plugin is "
 "active on the site you are seeking to clone."
 msgstr ""
 
-#: sem-cloner-admin.php:188
+#: sem-cloner-admin.php:197
 msgid ""
 "Version mismatch. Please make sure the site you are cloning is running the "
 "same version of Semiologic Cloner as this one."
 msgstr ""
 
-#: sem-cloner-admin.php:260
+#: sem-cloner-admin.php:269
 msgid "Invalid Request"
 msgstr ""
 
@@ -108,10 +112,10 @@ msgid ""
 "unexpected behaviors."
 msgstr ""
 
-#: sem-cloner.php:43 sem-cloner.php:44
+#: sem-cloner.php:45 sem-cloner.php:46
 msgid "Clone"
 msgstr ""
 
-#: sem-cloner.php:85
+#: sem-cloner.php:89
 msgid "Access Denied"
 msgstr ""

@@ -37,7 +37,7 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 = 1.4.2 =
 
-- Disable in multisite setups
+- WP 3.0 compat / Disable in multisite setups
 
 = 1.4.1 =
 

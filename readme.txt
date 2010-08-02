@@ -35,6 +35,10 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 == Change Log ==
 
+= 1.4.3 =
+
+- WP 3.0.1 compat
+
 = 1.4.2 =
 
 - WP 3.0 compat / Disable in multisite setups

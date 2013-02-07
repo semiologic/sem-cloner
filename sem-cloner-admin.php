@@ -100,7 +100,7 @@ class sem_cloner_admin {
 	/**
 	 * exec()
 	 *
-	 * @return void
+	 * @return bool
 	 **/
 	
 	function exec() {
@@ -262,7 +262,7 @@ class sem_cloner_admin {
 	 * @return void
 	 **/
 	
-	function export() {
+	static function export() {
 		$data = $_REQUEST['data'];
 		
 		if ( !in_array($data, array('version', 'options')) )
@@ -402,13 +402,14 @@ class sem_cloner_admin {
 		
 		die;
 	} # export()
-	
-	
-	/**
-	 * has_object()
-	 *
-	 * @return void
-	 **/
+
+
+    /**
+     * has_object()
+     *
+     * @param $option
+     * @return bool
+     */
 	
 	function has_object($option) {
 		if ( is_string($option) || is_numeric($option) || is_bool($option) ) {

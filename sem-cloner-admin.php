@@ -1,12 +1,20 @@
 <?php
 class sem_cloner_admin {
+    /**
+     * sem_cloner_admin ()
+     */
+    function sem_cloner_admin() {
+
+    }
+
+
 	/**
 	 * edit_options()
 	 *
 	 * @return void
 	 **/
 
-	function edit_options() {
+	static function edit_options() {
 		if ( !current_user_can('manage_options') )
 			return;
 		
@@ -54,7 +62,7 @@ class sem_cloner_admin {
 	 * @return void
 	 **/
 	
-	function start() {
+    static function start() {
 		wp_nonce_field('sem_cloner');
 		
 		$site_url = user_trailingslashit(get_option('home'));
@@ -103,7 +111,7 @@ class sem_cloner_admin {
 	 * @return bool
 	 **/
 	
-	function exec() {
+    static function exec() {
 		if ( !$_POST )
 			return false;
 		
@@ -427,4 +435,7 @@ class sem_cloner_admin {
 		return false;
 	} # has_object()
 } # sem_cloner_admin
+
+$sem_cloner_admin = new  sem_cloner_admin();
+
 ?>

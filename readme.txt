@@ -35,6 +35,11 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 == Change Log ==
 
+= 1.5 =
+
+- WP 3.6 compat
+- PHP 5.4 compat
+
 = 1.4.4 =
 
 - WP 3.5 compat

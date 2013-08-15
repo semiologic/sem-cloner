@@ -4,7 +4,6 @@ class sem_cloner_admin {
      * sem_cloner_admin ()
      */
     function sem_cloner_admin() {
-
     }
 
 

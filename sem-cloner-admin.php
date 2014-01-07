@@ -3,7 +3,7 @@ class sem_cloner_admin {
     /**
      * sem_cloner_admin ()
      */
-    function sem_cloner_admin() {
+	public function __construct() {
     }
 
 
@@ -20,8 +20,6 @@ class sem_cloner_admin {
 		echo '<div class="wrap">' . "\n";
 		
 		echo '<form method="post" action="">' . "\n";
-		
-		screen_icon();
 		
 		echo '<h2>' . __('Semiologic Cloner', 'sem-cloner') . '</h2>' . "\n";
 		
@@ -436,5 +434,3 @@ class sem_cloner_admin {
 } # sem_cloner_admin
 
 $sem_cloner_admin = new  sem_cloner_admin();
-
-?>

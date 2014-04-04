@@ -3,7 +3,7 @@
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/sem-cloner/
 Description: Lets you clone a Semiologic Pro site. It also works with normal WordPress installations. Cloning non-Semiologic Pro plugins and themes may result in unexpected behaviors.
-Version: 1.4.6
+Version: 1.5 dev
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: sem-cloner
@@ -19,9 +19,8 @@ This software is copyright Denis de Bernardy & Mike Koepke, and is distributed u
 **/
 
 
-load_plugin_textdomain('sem-cloner', false, dirname(plugin_basename(__FILE__)) . '/lang');
 
-define('sem_cloner_version', '1.4');
+define('sem_cloner_version', '1.5');
 
 
 /**
@@ -31,23 +30,111 @@ define('sem_cloner_version', '1.4');
  **/
 
 class sem_cloner {
-    /**
-     * sem_cloner()
-     */
-	public function __construct() {
-        add_action('init', array($this, 'rpc'), 1000000);
-        add_action('admin_menu', array($this, 'admin_menu'));
+	/**
+	 * Plugin instance.
+	 *
+	 * @see get_instance()
+	 * @type object
+	 */
+	protected static $instance = NULL;
 
-        if ( !get_option('sem_cloner_key') )
-        	update_option('sem_cloner_key', uniqid(rand()));
+	/**
+	 * URL to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_url = '';
+
+	/**
+	 * Path to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_path = '';
+
+	/**
+	 * Access this plugin’s working instance
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return  object of this class
+	 */
+	public static function get_instance()
+	{
+		NULL === self::$instance and self::$instance = new self;
+
+		return self::$instance;
+	}
+
+
+	/**
+	 * Loads translation file.
+	 *
+	 * Accessible to other classes to load different language files (admin and
+	 * front-end for example).
+	 *
+	 * @wp-hook init
+	 * @param   string $domain
+	 * @return  void
+	 */
+	public function load_language( $domain )
+	{
+		load_plugin_textdomain(
+			$domain,
+			FALSE,
+			$this->plugin_path . 'lang'
+		);
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 *
+	 */
+
+	public function __construct() {
+		$this->plugin_url    = plugins_url( '/', __FILE__ );
+		$this->plugin_path   = plugin_dir_path( __FILE__ );
+		$this->load_language( 'sem-cloner' );
+
+		add_action( 'plugins_loaded', array ( $this, 'init' ) );
     }
+
+	/**
+	 * init()
+	 *
+	 * @return void
+	 **/
+
+	function init() {
+		// register actions and filters
+		if ( !is_admin() ) {
+			add_action('init', array($this, 'rpc'), 1000000);
+		}
+		else {
+			add_action('admin_menu', array($this, 'admin_menu'));
+
+            if ( !get_option('sem_cloner_key') )
+                update_option('sem_cloner_key', uniqid(rand()));
+
+			add_action('load-tools_page_sem-cloner', array($this, 'sem_cloner_admin'));
+		}
+	}
+
+	/**
+	* sem_cloner_admin()
+	*
+	* @return void
+	**/
+	function sem_cloner_admin() {
+		if ( !class_exists('sem_cloner_admin') )
+			include_once $this->plugin_path . '/sem-cloner-admin.php';
+	}
 
     /**
 	 * admin_menu()
 	 *
 	 * @return void
 	 **/
-	
 	function admin_menu() {
 		if ( function_exists('is_super_admin') && !is_super_admin() )
 			return;
@@ -107,12 +194,4 @@ class sem_cloner {
 	} # rpc()
 } # sem_cloner
 
-
-function sem_cloner_admin() {
-	if ( !class_exists('sem_cloner_admin') )
-		include_once dirname(__FILE__) . '/sem-cloner-admin.php';
-}
-
-add_action('load-tools_page_sem-cloner', 'sem_cloner_admin');
-
-$sem_cloner = new sem_cloner();
+$sem_cloner = sem_cloner::get_instance();

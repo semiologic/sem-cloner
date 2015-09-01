@@ -2,10 +2,10 @@
 /*
 Plugin Name: Semiologic Cloner
 Plugin URI: http://www.semiologic.com/software/sem-cloner/
-Description: Lets you clone a Semiologic Pro site. It also works with normal WordPress installations. Cloning non-Semiologic Pro plugins and themes may result in unexpected behaviors.
-Version: 1.4.8
+Description: RETIRED - Lets you clone a Semiologic Pro site. It also works with normal WordPress installations. Cloning non-Semiologic Pro plugins and themes may result in unexpected behaviors.
+Version: 1.4.9
 Author: Denis de Bernardy & Mike Koepke
-Author URI: http://www.getsemiologic.com
+Author URI: https://www.semiologic.com
 Text Domain: sem-cloner
 Domain Path: /lang
 License: Dual licensed under the MIT and GPLv2 licenses
@@ -18,6 +18,31 @@ Terms of use
 This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
+/*
+ * This plugin has been retired.  No further development will occur on it.
+ * */
+
+// Disable the plugin
+
+$active_plugins = get_option('active_plugins');
+
+if ( !is_array($active_plugins) )
+{
+	$active_plugins = array();
+}
+
+foreach ( (array) $active_plugins as $key => $plugin )
+{
+	if ( $plugin == 'sem-cloner/sem-cloner.php' )
+	{
+		unset($active_plugins[$key]);
+		break;
+	}
+}
+
+sort($active_plugins);
+
+update_option('active_plugins', $active_plugins);
 
 
 define('sem_cloner_version', '1.4');

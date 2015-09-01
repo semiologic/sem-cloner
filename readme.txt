@@ -1,10 +1,12 @@
 === Semiologic Cloner ===
 Contributors: Denis-de-Bernardy, Mike_Koepke
-Donate link: http://www.semiologic.com/partners/
+Donate link: https://www.semiologic.com/donate/
 Tags: semiologic
 Requires at least: 2.8
 Tested up to: 4.0
 Stable tag: trunk
+
+> *This plugin has been retired.  No further development will occur on it.*
 
 Clone your site, plain and simple.
 
@@ -24,7 +26,7 @@ Thus, the best approach to use this plugin is to create and configure a sample s
 
 = Help Me! =
 
-The [Semiologic forum](http://forum.semiologic.com) is the best place to report issues.
+The [Semiologic Support Page](https://www.semiologic.com/support/) is the best place to report issues.
 
 
 == Installation ==
@@ -34,6 +36,10 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 
 == Change Log ==
+
+= 1.4.9 =
+
+- Development has ceased on this plugin.  Updated source and readme accordingly
 
 = 1.4.8 =
 

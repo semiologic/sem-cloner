@@ -6,12 +6,14 @@ Requires at least: 2.8
 Tested up to: 4.0
 Stable tag: trunk
 
-> *This plugin has been retired.  No further development will occur on it.*
 
 Clone your site, plain and simple.
 
 
 == Description ==
+
+> *This plugin has been retired.  No further development will occur on it.*  With a menu bar built into WordPress and the fact other plugins hook into that, this plugin conflicts with that capability
+
 
 The Semiologic Cloner plugin for WordPress allows to create a complete copy of an existing WP site. It was designed for sites that use the Semiologic theme, but it'll nonetheless work fine on other sites.
 
